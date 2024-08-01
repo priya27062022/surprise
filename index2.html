@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday</title>
+    <style>
+        body {
+            font-family: 'Courier New', Courier, monospace;
+            text-align: center;
+/* background: url('https://cdn.pixabay.com/photo/2020/09/21/15/21/background-5590342_1280.png') no-repeat center center fixed; */
+background: url('https://cdn.pixabay.com/photo/2019/02/20/10/37/pattern-4008915_1280.png') no-repeat center center fixed;
+/* background: url('https://cdn.pixabay.com/photo/2024/06/25/09/41/birthday-8852344_1280.png') no-repeat center center fixed; */
+            background-size: cover;
+            margin: 0;
+            padding: 0;
+            color: #333;
+        }
+        #welcome, #message, #popup {
+            background: rgba(255, 255, 255, 0.9); /* Slightly transparent background */
+            border: 1px solid #d2b48c; /* Light tan border */
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.2);
+            margin: 20px auto;
+            max-width: 600px;
+        }
+        #welcome {
+            background: rgba(253, 249, 240, 0.9); /* Very light beige */
+        }
+        #message {
+            display: none;
+        }
+        #popup {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 1000;
+        }
+        #popup button {
+            margin: 10px;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        #yesButton {
+            background-color: #8fbc8f; /* Light green */
+            color: white;
+        }
+        #noButton {
+            background-color: #f08080; /* Light coral */
+            color: white;
+        }
+        #noButton {
+            position: absolute;
+        }
+        img {
+            max-width: 100px;
+            margin: 10px;
+        }
+        .clickable {
+            cursor: pointer;
+            color: #0056b3;
+            text-decoration: underline;
+        }
+        .postcard {
+            background: rgba(245, 245, 220, 0.9); /* Light beige for postcard */
+            border: 1px solid #d2b48c; /* Light tan border */
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px auto;
+            max-width: 600px;
+            position: relative;
+        }
+        .stamp {
+            display: inline-block;
+            width: 80px;
+            height: 80px;
+background: url('https://www.example.com/vintage-stamp.png') no-repeat;
+            background-size: cover;
+            position: absolute;
+            top: 10px;
+            right: 10px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Initial Page -->
+    <div id="welcome" class="postcard">
+        <div class="stamp"></div>
+        <h1>Hi, you got a message!</h1>
+        <span class="clickable" id="clickHere">Click here</span>
+<img src="https://www.example.com/love-heart.png">
+    </div>
+ 
+    <!-- Message Page -->
+    <div id="message" class="postcard">
+        <div class="stamp"></div>
+        <h2>Hey love, there's a special note just for you!</h2>
+        <h1>HAPPY BIRTHDAY LOVE</h1>
+        <p id="intro">Hey dear... <span class="clickable" id="showMore">Show More</span></p>
+        <p id="fullMessage" style="display: none;">
+            Hey babe, you're truly one of a kind. I've never met anyone as sweet and caring as you.
+            Every guy I meet just doesn't compare to you. You always make me feel so special, and I appreciate everything you do.
+            I know life's been throwing curveballs at you lately, but I'm here rooting for you, hoping you get all the goodness you deserve.
+            Happy Birthday, my love! You're going places, maybe not now, but I believe in you. Your happiness is my happiness, just like you want the best for me.
+            Sending you all my love and flirty vibes on your special day! 💖🎉🌟 And if your TL disturbs you on your special day, I'll kick his butt out for sure! 😄🎂👊
+        </p>
+        <button id="showPopup">Show Popup</button>
+    </div>
+ 
+    <!-- Popup -->
+    <div id="popup">
+        <p>I hope this brings a smile on your face!</p>
+        <button id="yesButton">Yes</button>
+        <button id="noButton">No</button>
+    </div>
+ 
+    <!-- Favorite Song Content -->
+    <div id="favoriteSong" style="display: none;">
+        <h2>Enjoy Your Favorite Song!</h2>
+        <audio controls autoplay>
+            <source src="path_to_your_song.mp3" type="audio/mpeg">
+            Your browser does not support the audio element.
+        </audio>
+    </div>
+ 
+    <!-- JavaScript for Interactivity -->
+    <script>
+        // Show message section when "Click here" is clicked
+        document.getElementById('clickHere').addEventListener('click', () => {
+            document.getElementById('welcome').style.display = 'none';
+            document.getElementById('message').style.display = 'block';
+        });
+ 
+        // Show full message when "Show More" is clicked
+        document.getElementById('showMore').addEventListener('click', () => {
+            document.getElementById('fullMessage').style.display = 'block';
+            document.getElementById('showMore').style.display = 'none';
+        });
+ 
+        // Show popup when "Show Popup" button is clicked
+        document.getElementById('showPopup').addEventListener('click', () => {
+            document.getElementById('popup').style.display = 'block';
+        });
+ 
+        // Hide popup and redirect to favorite song when "Yes" button is clicked
+        document.getElementById('yesButton').addEventListener('click', () => {
+            document.getElementById('popup').style.display = 'none';
+            document.getElementById('message').style.display = 'none';
+            document.getElementById('favoriteSong').style.display = 'block';
+        });
+ 
+        // Function to move "No" button only when the mouse is close to it
+        function moveNoButton(event) {
+            const noButton = document.getElementById('noButton');
+            const popupRect = document.getElementById('popup').getBoundingClientRect();
+ 
+            const offsetX = 20;
+            const offsetY = 20;
+            let x = event.clientX - popupRect.left - noButton.offsetWidth / 2 + offsetX;
+let y = event.clientY - popupRect.top - noButton.offsetHeight / 2 + offsetY;
+ 
+            // Ensure the button stays within the popup area
+            x = Math.max(offsetX, Math.min(popupRect.width - noButton.offsetWidth - offsetX, x));
+            y = Math.max(offsetY, Math.min(popupRect.height - noButton.offsetHeight - offsetY, y));
+ 
+noButton.style.position = 'absolute';
+noButton.style.left = `${x}px`;
+noButton.style.top = `${y}px`;
+        }
+ 
+        // Add event listener to move "No" button only when clicked
+        let isMovingNoButton = false;
+        document.getElementById('noButton').addEventListener('mousedown', () => {
+            isMovingNoButton = true;
+            document.addEventListener('mousemove', moveNoButton);
+        });
+ 
+        // Stop moving "No" button when mouse is released
+        document.addEventListener('mouseup', () => {
+            if (isMovingNoButton) {
+                document.removeEventListener('mousemove', moveNoButton);
+                isMovingNoButton = false;
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,5 +1,5 @@
 body {
-    background-color: #ffc3da;
+    background-color: #FEF2F4;
 }
 
 .envelope-wrapper {
@@ -15,7 +15,7 @@ body {
     margin-left: auto;
     margin-right: auto;
     top: 50%;
-    background-color: #f7aaec;
+    background-color: #F7B5CA;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
 }
 
@@ -31,7 +31,7 @@ body {
 }
 
 .flap {
-    border-top: 98px solid #FF6863;
+    border-top: 98px solid #D14D72;
     border-left: 140px solid transparent;
     border-right: 140px solid transparent;
     border-bottom: 82px solid transparent;
@@ -70,27 +70,37 @@ body {
 
 .words {
     position: absolute;
-    left: 8%;
+    left: 7%;
+    right: 7%;
     width: 90%;
-    height: 14%;
-    font-size: 15px;
+    height: 11%;
+    font-size: 13px;
+    text-align: center;
     font-family: "Josefin Slab", serif;;
     color: black;
+    
 }
 
 .line1 {
+    font-weight: 1000 ;
     top: 8%;
+    text-align: left;
 }
+
 .line2 {
-    top: 27%;
+    top: 25%;
+    font-weight: 500;
+    
 }
 .line3 {
     top: 39%;
     text-align: center;
+    font-weight: 500;
 }
 .line4 {
     top: 58%;
     text-align: center;
+    font-weight: 600;
 }
 
 .open .flap {
@@ -200,6 +210,9 @@ body {
 
 .reset {
     text-align: center;
+    font-style: oblique;
+    font-display: auto;
+    
 }
 
 .reset button {
@@ -207,9 +220,9 @@ body {
     font-style: normal;
     transition: all 0.1s linear;
     background-color: transparent;
-    border: solid 2px #FF6863;
+    border: solid 2px #D14D72;
     border-radius: 4px;
-    color: #FF6863;
+    color: #D14D72;
     display: inline-block;
     font-size: 14px;
     text-transform: uppercase;
@@ -223,7 +236,7 @@ body {
 }
 
 .reset button:hover {
-    background-color: #FF6863;
+    background-color: #D14D72;
     cursor: pointer;
     color: white;
 }
